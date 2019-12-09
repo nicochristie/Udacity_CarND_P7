@@ -9,6 +9,25 @@
 using std::string;
 using std::vector;
 
+const double TARGET_VELOCITY = 49.5;
+const double MAX_VEL_INC = .224;
+const double MAX_VEL_DEC = .448;
+
+const int LEFT_LANE = 0;
+const int MIDDLE_LANE = 1;
+const int RIGHT_LANE = 2;
+const int UNKNOWN_LANE = -1;
+
+const int LANE_WIDTH = 4;
+const int LEFT_LANE_MIN_D = 0;
+const int LEFT_LANE_MAX_D = LEFT_LANE_MIN_D + LANE_WIDTH;
+const int MIDDLE_LANE_MIN_D = LEFT_LANE_MAX_D;
+const int MIDDLE_LANE_MAX_D = MIDDLE_LANE_MIN_D + LANE_WIDTH;
+const int RIGHT_LANE_MIN_D = MIDDLE_LANE_MAX_D;
+const int RIGHT_LANE_MAX_D = RIGHT_LANE_MIN_D + LANE_WIDTH;
+
+const double MIN_MARGIN_TO_OBJECTS = 30.0;
+
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,
 //   else the empty string "" will be returned.
