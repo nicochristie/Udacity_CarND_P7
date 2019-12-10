@@ -12,13 +12,13 @@ In this project your goal is to safely navigate around a virtual highway with ot
 ## Implementation of a Path Planner
 Given the data flow for behavior control as seen in class:
 
-![BehaviorControl](./Snaps/BehaviorControl.png)
+    ![BehaviorControl](./Snaps/BehaviorControl.png)
 
 *Modules for behavior control*
 
 The first thing the car needs to do is localize itself and other objects. For that it makes use of the sensor fusion information provided by the simulator, in Frenet coordinates, to determine the position and velocity of other surrounding cars. Since sensor fusion information is marginally old, the position of the sensed cars is slightly adjusted by a time frame of delta 0.02 seconds.
 
-![FrenetXY](./Snaps/FrenetXY.png) 	![FrenetSD](./Snaps/FrenetSD.png)
+    ![FrenetXY](./Snaps/FrenetXY.png) 	![FrenetSD](./Snaps/FrenetSD.png)
 
 *Highway in XY coordinates        vs        Highway in SD coordinates*
 
@@ -29,6 +29,7 @@ The gathered information defines the environment and the action to be taken. Thi
  - Follow blocking object
  - Change lane to the left
  - Change lane to the right
+
     ![FSM](./Snaps/FSM.png)
 
 *Finite State Machine*
@@ -49,6 +50,21 @@ Running a simulation, the car completed a full lap in just under 6 minutes witho
 > notice the group of 3 cars leading the group
 
 ![Capture3](./Snaps/Captures/Capture3.png) 
+
+
+---
+
+
+<img src="./Snaps/Captures/Capture3.png" height="570" width="420">
+
+
+---
+
+
+<img src="./Snaps/Captures/Capture3.png">
+
+
+---
 
 *3. Blocked on the right, changing lane to the left.*
 > a preference for 'left overtakes' was given to the trajectory planner, so it would have decided to change left anyway even if the right side would have been empty (as seen on image 7).
