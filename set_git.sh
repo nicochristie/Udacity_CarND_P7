@@ -17,9 +17,9 @@ echo
 
 echo setting up git
 
-git config --global user.name $userVar
-git config --global user.email $emailVar
-git remote set-url origin $upstreamVar
+git config --global user.name "Nicolas Christie"
+git config --global user.email "nicolas.christie@gmail.com"
+git remote set-url origin "https://github.com/nicochristie/Udacity_CarND_P7"
 echo
 
 echo Please verify remote:

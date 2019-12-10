@@ -212,35 +212,34 @@ int main() {
             else { fsm.execute(Triggers::ClearAhead); }                 // Execute 'ClearAhead' trigger on FSM
 
 #ifdef PRINT_DEBUG
-            switch (currLane) {
-            case LEFT_LANE:
-              std::cout << '|';
-              if (blockedFront) std::cout << '0'; else std::cout << '^';
-              if (blockedRight) std::cout << '0'; else std::cout << '^';
-              std::cout << ' ' << '|' << '\n';
-              std::cout << "|^  |\n";
-              break;
-            case MIDDLE_LANE:
-              std::cout << '|';
-              if (blockedLeft) std::cout << '0'; else std::cout << '^';
-              if (blockedFront) std::cout << '0'; else std::cout << '^';
-              if (blockedRight) std::cout << '0'; else std::cout << '^';
-              std::cout << '|' << '\n';
-              std::cout << "| ^ |\n";
-              break;
-            case RIGHT_LANE:
-              std::cout << '|' << ' ';
-              if (blockedLeft) std::cout << '0'; else std::cout << '^';
-              if (blockedFront) std::cout << '0'; else std::cout << '^';
-              std::cout << '|' << '\n';
-              std::cout << "|  ^|\n";
-              break;
-            default:
-              break;
-            }
+            if (false) { switch (currLane) {
+              case LEFT_LANE:
+                std::cout << '|';
+                if (blockedFront) std::cout << '0'; else std::cout << '^';
+                if (blockedRight) std::cout << '0'; else std::cout << '^';
+                std::cout << ' ' << '|' << '\n';
+                std::cout << "|^  |\n";
+                break;
+              case MIDDLE_LANE:
+                std::cout << '|';
+                if (blockedLeft) std::cout << '0'; else std::cout << '^';
+                if (blockedFront) std::cout << '0'; else std::cout << '^';
+                if (blockedRight) std::cout << '0'; else std::cout << '^';
+                std::cout << '|' << '\n';
+                std::cout << "| ^ |\n";
+                break;
+              case RIGHT_LANE:
+                std::cout << '|' << ' ';
+                if (blockedLeft) std::cout << '0'; else std::cout << '^';
+                if (blockedFront) std::cout << '0'; else std::cout << '^';
+                std::cout << '|' << '\n';
+                std::cout << "|  ^|\n";
+                break;
+              default:
+                break;
+            }}
 #endif // PRINT_DEBUG
 
-            // 3. TRAJECTORY: Calculate trajectory for the car to follow
             // Create a list of widely spaced (x,y) waypoints, evenly spaced at 30m
             // later interpolate waypoints with spline and fill in more waypoints
 
