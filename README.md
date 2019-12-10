@@ -11,12 +11,14 @@ In this project your goal is to safely navigate around a virtual highway with ot
 ---
 ## Implementation of a Path Planner
 Given the data flow for behavior control as seen in class:
-    ![BehaviorControl](./Snaps/BehaviorControl.png)
-    *Modules for behavior control*
+
+![BehaviorControl](./Snaps/BehaviorControl.png)
+*Modules for behavior control*
 
 The first thing the car needs to do is localize itself and other objects. For that it makes use of the sensor fusion information provided by the simulator, in Frenet coordinates, to determine the position and velocity of other surrounding cars. Since sensor fusion information is marginally old, the position of the sensed cars is slightly adjusted by a time frame of delta 0.02 seconds.
-	![FrenetXY](./Snaps/FrenetXY.png) 	![FrenetSD](./Snaps/FrenetSD.png) 
-	*Highway in XY coordinates **vs** Highway in SD coordinates*
+
+![FrenetXY](./Snaps/FrenetXY.png) 	![FrenetSD](./Snaps/FrenetSD.png) 
+*Highway in XY coordinates        vs        Highway in SD coordinates*
 
 Once the position of all detected vehicles is predicted, and taking into consideration the position and velocity of the car, it can determined if the current lane is free, blocked, if any adjacent lane is blocked or if the car can change to any of them. 
 
@@ -25,42 +27,43 @@ The gathered information defines the environment and the action to be taken. Thi
  - Follow blocking object
  - Change lane to the left
  - Change lane to the right
+
 ![FSM](./Snaps/FSM.png)
 *Finite State Machine*
 
-One could argue the need for a transition between Keep Lane and Change Lane and decide to transition to Follow first, since the blocking action is what defines the interest in changing lanes, but since sensor-acquisition takes place before trajectory planning, we can jump straight from a Keep Lane state to a Change Lane state since we already know we are blocked, thus saving a full *sensor>prediction>planing>motion* cycle.
+One could argue the need for a transition between Keep Lane and Change Lane and decide to transition to Follow first, since the blocking action is what defines the interest in changing lanes, but since sensor-acquisition takes place before trajectory planning, we can jump straight from a Keep Lane state to a Change Lane state since we already know we are blocked, thus saving a full **sensor>prediction>planing>motion** cycle.
 
 For this project, the target velocity was set at 49.5mph, with a maximum acceleration value of 0.224mph/cycle and a maximum breaking deceleration of 0.448mph/cycle. The safety margin to other cars (both in front as behind the car on either adjacent lane) was set to 30. The margin distance is not considered when braking.
 
 Running a simulation, the car completed a full lap in just under 6 minutes without incidents.
 
-![Capture1](./Snaps/Capture/Capture1.png)
+![Capture1](./Snaps/Captures/Capture1.png)
 *1. Start of track, 0 to 50 in 27 seconds... a beast!*
 
-![Capture2](./Snaps/Capture/Capture2.png) 
+![Capture2](./Snaps/Captures/Capture2.png) 
 *2. Car changing from right to middle lane*
 > notice the group of 3 cars leading the group
 
-![Capture3](./Snaps/Capture/Capture3.png) 
+![Capture3](./Snaps/Captures/Capture3.png) 
 *3. Blocked on the right, changing lane to the left.*
 > a preference for 'left overtakes' was given to the trajectory planner, so it would have decided to change left anyway even if the right side would have been empty (as seen on image 7).
 
-![Capture4](./Snaps/Capture/Capture4.png) 
+![Capture4](./Snaps/Captures/Capture4.png) 
 *4. Car changing from left to middle lane*
 
-![Capture5](./Snaps/Capture/Capture5.png) 
+![Capture5](./Snaps/Captures/Capture5.png) 
 *5. Car on leftmost lane, blocked front and right*
 > since no adjacent lane is free, the car reduced speed and stayed in the current lane following the car in front at a safe distance.
  
-![Capture6](./Snaps/Capture/Capture6.png) 
+![Capture6](./Snaps/Captures/Capture6.png) 
 *6. Car blocked front and left, changes from middle to right lane*
 > the car driving on the leftmost lane is still inside the *safe distance* area, so the planner decides to overtake on the right side... bad boy...
 
-![Capture7](./Snaps/Capture/Capture7.png) 
+![Capture7](./Snaps/Captures/Capture7.png) 
 *7. Car blocked font, changes from middle to left lane (preferring left)*
 > opposite to image 6. the car can now overtake on the left side, regardless of the status of the right side. This is tricked forcing a sensor fusion 'blocked right' flag when we detect the left side is clear, thus making a transition to *change right* impossible.
 
-![Capture8](./Snaps/Capture/Capture8.png) 
+![Capture8](./Snaps/Captures/Capture8.png) 
 *8. After 6:45 minutes, the car reaches 5 miles without incidents*
 > the car safely managed to complete a full lap without ever colliding with other cars, exceeding speed or jerk limits.
 
