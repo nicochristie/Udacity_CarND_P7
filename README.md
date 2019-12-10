@@ -12,7 +12,7 @@ In this project your goal is to safely navigate around a virtual highway with ot
 ## Implementation of a Path Planner
 Given the data flow for behavior control as seen in class:
 
-    ![BehaviorControl](./Snaps/BehaviorControl.png)
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/BehaviorControl.PNG">
 
 *Modules for behavior control*
 
@@ -40,46 +40,40 @@ For this project, the target velocity was set at 49.5mph, with a maximum acceler
 
 Running a simulation, the car completed a full lap in just under 6 minutes without incidents.
 
-![Capture1](./Snaps/Captures/Capture1.png)
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture1.PNG">
 
 *1. Start of track, 0 to 50 in 27 seconds... a beast!*
 
-![Capture2](./Snaps/Captures/Capture2.png) 
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture2.PNG">
 
 *2. Car changing from right to middle lane*
 > notice the group of 3 cars leading the group
 
-![Capture3](./Snaps/Captures/Capture3.png) 
-
----
-
 <img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture3.PNG">
-
----
 
 *3. Blocked on the right, changing lane to the left.*
 > a preference for 'left overtakes' was given to the trajectory planner, so it would have decided to change left anyway even if the right side would have been empty (as seen on image 7).
 
-![Capture4](./Snaps/Captures/Capture4.png) 
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture4.PNG">
 
 *4. Car changing from left to middle lane*
 
-![Capture5](./Snaps/Captures/Capture5.png) 
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture5.PNG">
 
 *5. Car on leftmost lane, blocked front and right*
 > since no adjacent lane is free, the car reduced speed and stayed in the current lane following the car in front at a safe distance.
  
-![Capture6](./Snaps/Captures/Capture6.png) 
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture6.PNG">
 
 *6. Car blocked front and left, changes from middle to right lane*
 > the car driving on the leftmost lane is still inside the *safe distance* area, so the planner decides to overtake on the right side... bad boy...
 
-![Capture7](./Snaps/Captures/Capture7.png) 
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture7.PNG">
 
 *7. Car blocked font, changes from middle to left lane (preferring left)*
 > opposite to image 6. the car can now overtake on the left side, regardless of the status of the right side. This is tricked forcing a sensor fusion 'blocked right' flag when we detect the left side is clear, thus making a transition to *change right* impossible.
 
-![Capture8](./Snaps/Captures/Capture8.png) 
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture8.PNG">
 
 *8. After 6:45 minutes, the car reaches 5 miles without incidents*
 > the car safely managed to complete a full lap without ever colliding with other cars, exceeding speed or jerk limits.
