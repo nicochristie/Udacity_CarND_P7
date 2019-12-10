@@ -162,8 +162,8 @@ git checkout e94b6e1
 
 ### Acknowledments
 Thank you for some great libraries and tools!
-* http://kluge.in-chemnitz.de/opensource/spline/
 * https://github.com/eglimi/cppfsm/blob/master/fsm.h
+* http://kluge.in-chemnitz.de/opensource/spline/
 * http://madebyevan.com/fsm/
 * https://stackedit.io/
 
