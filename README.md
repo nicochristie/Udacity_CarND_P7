@@ -18,7 +18,9 @@ Given the data flow for behavior control as seen in class:
 
 The first thing the car needs to do is localize itself and other objects. For that it makes use of the sensor fusion information provided by the simulator, in Frenet coordinates, to determine the position and velocity of other surrounding cars. Since sensor fusion information is marginally old, the position of the sensed cars is slightly adjusted by a time frame of delta 0.02 seconds.
 
-![XY Frenet](Snaps/FrenetXY.PNG)    ![SD Frenet](Snaps/FrenetSD.PNG)
+![XY Frenet](Snaps/FrenetXY.PNG)
+
+![SD Frenet](Snaps/FrenetSD.PNG)
 
 *Highway in XY coordinates **vs** Highway in SD coordinates*
 
@@ -39,25 +41,24 @@ For this project, the target velocity was set at 49.5mph, with a maximum acceler
 
 Running a simulation, the car completed a full lap in just under 6 minutes without incidents.
 
-![Capture 1](Snaps/Captures/Capture1.PNG)
-
 *1. Start of track, 0 to 50 in 27 seconds... a beast!*
 > car starts on middle lane at 0mph and starts accelerating
-
-![Capture 2](Snaps/Captures/Capture2.PNG)
+![Capture 1](Snaps/Captures/Capture1.PNG)
 
 *2. Car changing from right to middle lane*
+![Capture 2](Snaps/Captures/Capture2.PNG)
 > notice the group of 3 cars leading the group
 
-![Capture 3](Snaps/Captures/Capture3.PNG)
-
 *3. Blocked on the right, changing lane to the left.*
+
+![Capture 3](Snaps/Captures/Capture3.PNG)
 > a preference for 'left overtakes' was given to the trajectory planner, so it would have decided to change left anyway even if the right side would have been empty (as seen on image 7).
+
+*4. Car changing from left to middle lane*
 
 ![Capture 4](Snaps/Captures/Capture4.PNG)
 
-*4. Car changing from left to middle lane*
-> 
+> test test test
 
 ![Capture 5](Snaps/Captures/Capture5.PNG)
 
