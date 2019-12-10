@@ -41,34 +41,42 @@ Running a simulation, the car completed a full lap in just under 6 minutes witho
 
 *1. Start of track, 0 to 50 in 27 seconds... a beast!*
 > ![Capture 1](Snaps/Captures/Capture1.PNG)
+>
 > car starts on middle lane at 0mph and starts accelerating
 
 *2. Car changing from right to middle lane*
 > ![Capture 2](Snaps/Captures/Capture2.PNG)
+>
 > notice the group of 3 cars leading the group
 
 *3. Blocked on the right, changing lane to the left.*
 > ![Capture 3](Snaps/Captures/Capture3.PNG)
+>
 > a preference for 'left overtakes' was given to the trajectory planner, so it would have decided to change left anyway even if the right side would have been empty (as seen on image 7).
 
 *4. Car changing from left to middle lane*
 > ![Capture 4](Snaps/Captures/Capture4.PNG)
+>
 > these drivers... driving on the leftmost lane... 
 
 *5. Car on leftmost lane, blocked front and right*
 > ![Capture 5](Snaps/Captures/Capture5.PNG)
+>
 > since no adjacent lane is free, the car reduced speed and stayed in the current lane following the car in front at a safe distance.
  
 *6. Car blocked front and left, changes from middle to right lane*
 > ![Capture 6](Snaps/Captures/Capture6.PNG)
+>
 > the car driving on the leftmost lane is still inside the *safe distance* area, so the planner decides to overtake on the right side... bad boy...
 
 *7. Car blocked font, changes from middle to left lane (preferring left)*
 > ![Capture 7](Snaps/Captures/Capture7.PNG)
+>
 > opposite to image 6. the car can now overtake on the left side, regardless of the status of the right side. This is tricked forcing a sensor fusion 'blocked right' flag when we detect the left side is clear, thus making a transition to *change right* impossible.
 
 *8. After 6:45 minutes, the car reaches 5 miles without incidents*
 > ![Capture 8](Snaps/Captures/Capture8.PNG)
+>
 > the car safely managed to complete a full lap without ever colliding with other cars, exceeding speed or jerk limits.
 
 ---
@@ -153,3 +161,6 @@ Thank you for some great libraries and tools!
 * https://github.com/eglimi/cppfsm/blob/master/fsm.h
 * http://madebyevan.com/fsm/
 * https://stackedit.io/
+
+#### As for Markdown...
+Hooooly $#%& ... image "xx.PNG" is not the same as image "xx.png" ... wow!
