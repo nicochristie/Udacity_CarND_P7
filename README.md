@@ -51,18 +51,9 @@ Running a simulation, the car completed a full lap in just under 6 minutes witho
 
 ![Capture3](./Snaps/Captures/Capture3.png) 
 
-
 ---
 
-
-<img src="./Snaps/Captures/Capture3.png" height="570" width="420">
-
-
----
-
-
-<img src="./Snaps/Captures/Capture3.png">
-
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture3.PNG">
 
 ---
 
