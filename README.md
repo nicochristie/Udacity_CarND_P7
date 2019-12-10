@@ -11,12 +11,11 @@ In this project your goal is to safely navigate around a virtual highway with ot
 ---
 ## Implementation of a Path Planner
 Given the data flow for behavior control as seen in class:
-
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/BehaviorControl.PNG"/>
+![Behavior control](Snaps/BehaviorControl.PNG)
 *Modules for behavior control*
 
 The first thing the car needs to do is localize itself and other objects. For that it makes use of the sensor fusion information provided by the simulator, in Frenet coordinates, to determine the position and velocity of other surrounding cars. Since sensor fusion information is marginally old, the position of the sensed cars is slightly adjusted by a time frame of delta 0.02 seconds.
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/FrenetXY.PNG"/><img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/FrenetSD.PNG"/>
+![XY Frenet](Snaps/FrenetXY.PNG)![SD Frenet](Snaps/FrenetSD.PNG)
 *Highway in XY coordinates **vs** Highway in SD coordinates*
 
 Once the position of all detected vehicles is predicted, and taking into consideration the position and velocity of the car, it can determined if the current lane is free, blocked, if any adjacent lane is blocked or if the car can change to any of them. 
@@ -26,7 +25,7 @@ The gathered information defines the environment and the action to be taken. Thi
  - Follow blocking object
  - Change lane to the left
  - Change lane to the right
- ![FSM](.Snaps/FSM.png)
+ ![FSM](Snaps/FSM.png)
 *Finite State Machine*
 
     One could argue the need for a transition between Keep Lane and Change Lane and decide to transition to Follow first, since the blocking action is what defines the interest in changing lanes, but since sensor-acquisition takes place before trajectory planning, we can jump straight from a Keep Lane state to a Change Lane state since we already know we are blocked, thus saving a full **sensor>prediction>planing>motion** cycle.
@@ -35,11 +34,11 @@ For this project, the target velocity was set at 49.5mph, with a maximum acceler
 
 Running a simulation, the car completed a full lap in just under 6 minutes without incidents.
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture1.PNG"/>
+![Capture 1](Snaps/Captures/Capture1.PNG)
 *1. Start of track, 0 to 50 in 27 seconds... a beast!*
 > car starts on middle lane at 0mph and starts accelerating
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture2.PNG"/>
+![Capture 2](Snaps/Captures/Capture2.PNG)
 *2. Car changing from right to middle lane*
 > notice the group of 3 cars leading the group
 
