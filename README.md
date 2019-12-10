@@ -72,12 +72,17 @@ Running a simulation, the car completed a full lap in just under 6 minutes witho
 *7. Car blocked font, changes from middle to left lane (preferring left)*
 > ![Capture 7](Snaps/Captures/Capture7.PNG)
 >
-> opposite to image 6. the car can now overtake on the left side, regardless of the status of the right side. This is tricked forcing a sensor fusion 'blocked right' flag when we detect the left side is clear, thus making a transition to *change right* impossible.
+> opposite to image 6, the car can now overtake on the left side, regardless of the status of the right side. This is tricked forcing a sensor fusion 'blocked right' flag when we detect the left side is clear, thus making a transition to *change right* impossible.
 
 *8. After 6:45 minutes, the car reaches 5 miles without incidents*
 > ![Capture 8](Snaps/Captures/Capture8.PNG)
 >
 > the car safely managed to complete a full lap without ever colliding with other cars, exceeding speed or jerk limits.
+
+### Room for improvement
+* A few things can be improved, for example the suggested optimized lane change, or the additional prepare lane change state in the FSM.
+* I also tried to introduce a variable speed adjustment when encountering a blocking car, instead of just decelerating at a fixed rate, which lead to much lower speeds than what would have been required (down to 20+mph when car ahead was driving around 40-45). The idea was to take the difference in speed to the car ahead and brake the Min(usual_dec_speed, delta_speed) ... in which case the car would decelerate faster at first (within the jerk limits) but then adjust its braking force to slowly slightly under-match the car ahead. A PID controller would have been a better solution instead of just taking the delta directly.
+* Detection and additional braking if for example the car is driving on the left lane, the middle lane is blocked but the right lane would be available, so that the car can change to the far right instead of being stuck.
 
 ---
 ## Project infos and tips
