@@ -18,8 +18,7 @@ Given the data flow for behavior control as seen in class:
 
 The first thing the car needs to do is localize itself and other objects. For that it makes use of the sensor fusion information provided by the simulator, in Frenet coordinates, to determine the position and velocity of other surrounding cars. Since sensor fusion information is marginally old, the position of the sensed cars is slightly adjusted by a time frame of delta 0.02 seconds.
 
-![XY Frenet](Snaps/FrenetXY.PNG)
-![SD Frenet](Snaps/FrenetSD.PNG)
+![XY Frenet](Snaps/FrenetXY.PNG)    ![SD Frenet](Snaps/FrenetSD.PNG)
 
 *Highway in XY coordinates **vs** Highway in SD coordinates*
 
@@ -34,7 +33,7 @@ The gathered information defines the environment and the action to be taken. Thi
 
 *Finite State Machine*
 
-    One could argue the need for a transition between Keep Lane and Change Lane and decide to transition to Follow first, since the blocking action is what defines the interest in changing lanes, but since sensor-acquisition takes place before trajectory planning, we can jump straight from a Keep Lane state to a Change Lane state since we already know we are blocked, thus saving a full **sensor>prediction>planing>motion** cycle.
+> One could argue the need for a transition between Keep Lane and Change Lane and decide to transition to Follow first, since the blocking action is what defines the interest in changing lanes, but since sensor-acquisition takes place before trajectory planning, we can jump straight from a Keep Lane state to a Change Lane state since we already know we are blocked, thus saving a full **sensor>prediction>planing>motion** cycle.
 
 For this project, the target velocity was set at 49.5mph, with a maximum acceleration value of 0.224mph/cycle and a maximum breaking deceleration of 0.448mph/cycle. The safety margin to other cars (both in front as behind the car on either adjacent lane) was set to 30. The margin distance is not considered when braking.
 
