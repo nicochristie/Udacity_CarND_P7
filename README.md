@@ -26,37 +26,45 @@ The gathered information defines the environment and the action to be taken. Thi
  - Follow blocking object
  - Change lane to the left
  - Change lane to the right
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/FSM.PNG"/>
+ ![FSM](.Snaps/FSM.png)
 *Finite State Machine*
 
-One could argue the need for a transition between Keep Lane and Change Lane and decide to transition to Follow first, since the blocking action is what defines the interest in changing lanes, but since sensor-acquisition takes place before trajectory planning, we can jump straight from a Keep Lane state to a Change Lane state since we already know we are blocked, thus saving a full **sensor>prediction>planing>motion** cycle.
+    One could argue the need for a transition between Keep Lane and Change Lane and decide to transition to Follow first, since the blocking action is what defines the interest in changing lanes, but since sensor-acquisition takes place before trajectory planning, we can jump straight from a Keep Lane state to a Change Lane state since we already know we are blocked, thus saving a full **sensor>prediction>planing>motion** cycle.
 
 For this project, the target velocity was set at 49.5mph, with a maximum acceleration value of 0.224mph/cycle and a maximum breaking deceleration of 0.448mph/cycle. The safety margin to other cars (both in front as behind the car on either adjacent lane) was set to 30. The margin distance is not considered when braking.
 
 Running a simulation, the car completed a full lap in just under 6 minutes without incidents.
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture1.PNG"/>*1. Start of track, 0 to 50 in 27 seconds... a beast!*
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture1.PNG"/>
+*1. Start of track, 0 to 50 in 27 seconds... a beast!*
 > car starts on middle lane at 0mph and starts accelerating
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture2.PNG"/>*2. Car changing from right to middle lane*
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture2.PNG"/>
+*2. Car changing from right to middle lane*
 > notice the group of 3 cars leading the group
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture3.PNG"/>*3. Blocked on the right, changing lane to the left.*
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture3.PNG"/>
+*3. Blocked on the right, changing lane to the left.*
 > a preference for 'left overtakes' was given to the trajectory planner, so it would have decided to change left anyway even if the right side would have been empty (as seen on image 7).
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture4.PNG"/>*4. Car changing from left to middle lane*
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture4.PNG"/>
+*4. Car changing from left to middle lane*
 > 
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture5.PNG"/>*5. Car on leftmost lane, blocked front and right*
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture5.PNG"/>
+*5. Car on leftmost lane, blocked front and right*
 > since no adjacent lane is free, the car reduced speed and stayed in the current lane following the car in front at a safe distance.
  
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture6.PNG"/>*6. Car blocked front and left, changes from middle to right lane*
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture6.PNG"/>
+*6. Car blocked front and left, changes from middle to right lane*
 > the car driving on the leftmost lane is still inside the *safe distance* area, so the planner decides to overtake on the right side... bad boy...
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture7.PNG"/>*7. Car blocked font, changes from middle to left lane (preferring left)*
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture7.PNG"/>
+*7. Car blocked font, changes from middle to left lane (preferring left)*
 > opposite to image 6. the car can now overtake on the left side, regardless of the status of the right side. This is tricked forcing a sensor fusion 'blocked right' flag when we detect the left side is clear, thus making a transition to *change right* impossible.
 
-<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture8.PNG"/>*8. After 6:45 minutes, the car reaches 5 miles without incidents*
+<img src="https://github.com/nicochristie/Udacity_CarND_P7/blob/master/Snaps/Captures/Capture8.PNG"/>
+*8. After 6:45 minutes, the car reaches 5 miles without incidents*
 > the car safely managed to complete a full lap without ever colliding with other cars, exceeding speed or jerk limits.
 
 ---
