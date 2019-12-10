@@ -12,7 +12,7 @@ In this project your goal is to safely navigate around a virtual highway with ot
 ## Implementation of a Path Planner
 Given the data flow for behavior control as seen in class:
 
-![BehaviorControl](./Snaps/BehaviorControl.png)
+![BehaviorControl](./Snaps/BehaviorControl_s.png)
 *Modules for behavior control*
 
 The first thing the car needs to do is localize itself and other objects. For that it makes use of the sensor fusion information provided by the simulator, in Frenet coordinates, to determine the position and velocity of other surrounding cars. Since sensor fusion information is marginally old, the position of the sensed cars is slightly adjusted by a time frame of delta 0.02 seconds.
